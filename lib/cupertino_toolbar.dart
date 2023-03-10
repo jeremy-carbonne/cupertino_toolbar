@@ -45,16 +45,16 @@ class CupertinoToolbar extends StatelessWidget {
   /// {@end-tool}
   ///
   CupertinoToolbar({
-    Key key,
-    @required this.items,
-    @required this.body
+    Key? key,
+    required this.items,
+    required this.body
   }) : assert(items != null),
-       assert(
+        assert(
         items.every((CupertinoToolbarItem item) => (item.icon != null && item.onPressed != null)) == true,
         'Every item must have an icon and onPressed defined',
-       ),
-       assert(body != null),
-       super(key: key);
+        ),
+        assert(body != null),
+        super(key: key);
 
   /// The interactive items laid out within the toolbar where each item has an icon.
   final List<CupertinoToolbarItem> items;
@@ -65,28 +65,28 @@ class CupertinoToolbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[
-        Expanded(
-          child: body
-        ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(color: Color(0xFFBCBBC1), width: 0.0)
-            )
+        children: <Widget>[
+          Expanded(
+              child: body
           ),
-          child: SafeArea(
-            top: false,
-            child: SizedBox(
-              height: 44.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: _createButtons()
+          Container(
+              decoration: BoxDecoration(
+                  border: Border(
+                      top: BorderSide(color: Color(0xFFBCBBC1), width: 0.0)
+                  )
+              ),
+              child: SafeArea(
+                  top: false,
+                  child: SizedBox(
+                      height: 44.0,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: _createButtons()
+                      )
+                  )
               )
-            )
           )
-        )
-      ]
+        ]
     );
   }
 
@@ -94,13 +94,13 @@ class CupertinoToolbar extends StatelessWidget {
     final List<Widget> children = <Widget>[];
     for (int i = 0; i < items.length; i += 1) {
       children.add(CupertinoButton(
-        padding: EdgeInsets.zero,
-        child: Icon(
-          items[i].icon,
-          color: CupertinoColors.activeBlue,
-          semanticLabel: items[i].semanticLabel,
-        ),
-        onPressed: items[i].onPressed
+          padding: EdgeInsets.zero,
+          child: Icon(
+            items[i].icon,
+            color: CupertinoColors.activeBlue,
+            semanticLabel: items[i].semanticLabel,
+          ),
+          onPressed: items[i].onPressed
       ));
     }
     return children;
@@ -113,11 +113,11 @@ class CupertinoToolbarItem {
   ///
   /// The argument [icon] should not be null and the argument [onPressed] should not be null.
   const CupertinoToolbarItem({
-    @required this.icon,
-    @required this.onPressed,
-    this.semanticLabel
+    required this.icon,
+    required this.onPressed,
+    required this.semanticLabel
   }) : assert(icon != null),
-       assert(onPressed != null);
+        assert(onPressed != null);
 
   /// The icon of the item.
   ///
